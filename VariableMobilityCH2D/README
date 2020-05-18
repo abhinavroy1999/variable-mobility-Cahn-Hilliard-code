@@ -1,0 +1,73 @@
+**********************************************************************************
+                                  PREAMBLE
+
+The code performs simulation of Spinodal Decompositioin in an isostructural 
+binary alloy  and produces results of subsequent bulk-diffusion-controlled 
+dynamics and interface-diffusion-controlled dynamics using Variable Mobility 
+Cahn-Hilliard equaiton (option is given to the user to determine which one 
+to perform, for which, modifications are to be made in VariableCH.c file as 
+directed therein).
+
+Authors: Abhinav Roy, M.P. Gururajan
+
+This directory contains free software which is distributed under GNU GPL v 3.0 
+(or any later versions). To get more information regarding the lisence, and the
+terms and conditions to modify and/or redistribute this work, kindly refer to 
+the text file present in this directory under the name "GPL".
+
+For more details regarding the governing equations used for the algorithm 
+employed in the source code, please refer to the paper titled:
+"Coarsening kinetics from a variable-mobility Cahn-Hilliard equation: 
+Application of a semi-implicit Fourier spectral method",
+by J Zhu, LQ Chen, J Shen, V Tikare - Physical Review E, 1999 - APS.
+DOI: 10.1103/PhysRevE.60.3564
+
+**********************************************************************************
+CONTENTS OF THIS DIRECTORY: -
+
+1. header_file (directory): contains the header file "headers.h" with the 
+                            required function prototyes.
+
+2. input (directory):       contains text files for various simulation data required 
+                            for simulation. To be altered accordingly depending on 
+                            the need of simulation.
+
+3. output (directory):      contains output of a particular run: -
+                            a. input data test result
+                            b. simulation data  
+                            c. the output binary files for various time of evolution 
+                            d. PostScript (PS) files displaying the morphological 
+                               evolution for each output file.
+
+4. source_code (directory): contains source files, namely: -
+                            a. "VariableCH.c", 
+                            b. "testcode.c"
+                            c. "evolution.c"
+                            d. "ps_file.c".
+5. Makefile
+
+***********************************************************************************
+TO RUN THE CODE: -
+
+For selective compilation, make the following changes in the "VariableCH.c"
+program file (as per the demand of the simulation): -
+
+*To implement bulk-diffusion-controlled-dynamics code, keep the comment "//#define INTERFACE" 
+ intact (which is present as a comment by default in the source code).
+*To implement interface-diffusion-controlled-dynamics code, implement the INTERFACE macro 
+ by removing the comment ("//") symbol present before "#define INTERFACE".
+
+If there are ".o" files and the "CH_variable_mobility.out" file present in the parent 
+directory, perform the following operations: -
+[command for Linux terminal (OS: Ubuntu 16.04 LTS)]
+
+make clean
+make CLEAN
+
+To run the code: -
+
+make
+./CH_variable_mobility.out
+
+The fresh output of a particular run will be present in the "output" directory.
+***********************************************************************************
